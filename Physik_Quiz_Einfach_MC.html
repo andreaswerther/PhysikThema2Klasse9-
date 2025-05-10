@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physik-Quiz MC (Einfach)</title>
+    <style>
+        body { font-family: sans-serif; margin: 10px; background: #f9f9f9; }
+        .frage { margin-bottom: 20px; padding: 10px; background: white; border-radius: 6px; }
+        .antworten { margin-top: 8px; }
+        button { padding: 10px 15px; font-size: 16px; }
+    </style>
+</head>
+<body>
+<h1>Physik-Quiz – Multiple Choice</h1>
+
+<form id="quizForm">
+    <div class="frage">
+        <p><strong>1. Wie lautet die Einheit der elektrischen Spannung?</strong></p>
+        <div class="antworten">
+            <label><input type="radio" name="q1" value="A"> A) Ampere</label><br>
+            <label><input type="radio" name="q1" value="B"> B) Volt</label><br>
+            <label><input type="radio" name="q1" value="C"> C) Watt</label><br>
+            <label><input type="radio" name="q1" value="D"> D) Ohm</label>
+        </div>
+    </div>
+
+    <div class="frage">
+        <p><strong>2. Wofür steht die Formel I = Q / t?</strong></p>
+        <div class="antworten">
+            <label><input type="radio" name="q2" value="A"> A) Spannung</label><br>
+            <label><input type="radio" name="q2" value="B"> B) Stromstärke</label><br>
+            <label><input type="radio" name="q2" value="C"> C) Leistung</label><br>
+            <label><input type="radio" name="q2" value="D"> D) Energie</label>
+        </div>
+    </div>
+
+    <div class="frage">
+        <p><strong>3. Ein Strom von 2 A fließt für 3 Sekunden. Wie viel Ladung wurde transportiert?</strong></p>
+        <div class="antworten">
+            <label><input type="radio" name="q3" value="A"> A) 1 C</label><br>
+            <label><input type="radio" name="q3" value="B"> B) 3 C</label><br>
+            <label><input type="radio" name="q3" value="C"> C) 6 C</label><br>
+            <label><input type="radio" name="q3" value="D"> D) 9 C</label>
+        </div>
+    </div>
+
+    <div class="frage">
+        <p><strong>4. Ein Gerät hat 12 V Spannung und zieht 0,5 A Strom. Wie viel Energie verbraucht es in 10 s?</strong></p>
+        <div class="antworten">
+            <label><input type="radio" name="q4" value="A"> A) 30 J</label><br>
+            <label><input type="radio" name="q4" value="B"> B) 60 J</label><br>
+            <label><input type="radio" name="q4" value="C"> C) 120 J</label><br>
+            <label><input type="radio" name="q4" value="D"> D) 6 J</label>
+        </div>
+    </div>
+
+    <div class="frage">
+        <p><strong>5. Eine Lampe hat einen Wirkungsgrad von 25 % und nimmt 40 W auf. Wie viel Watt werden in Licht umgesetzt?</strong></p>
+        <div class="antworten">
+            <label><input type="radio" name="q5" value="A"> A) 25 W</label><br>
+            <label><input type="radio" name="q5" value="B"> B) 20 W</label><br>
+            <label><input type="radio" name="q5" value="C"> C) 15 W</label><br>
+            <label><input type="radio" name="q5" value="D"> D) 10 W</label>
+        </div>
+    </div>
+
+    <button type="button" onclick="auswerten()">Auswerten</button>
+</form>
+
+<p id="ergebnis"></p>
+
+<script>
+function auswerten() {
+    const loesungen = ['B', 'B', 'C', 'B', 'D'];
+    let punkte = 0;
+    for (let i = 1; i <= 5; i++) {
+        let antwort = document.querySelector('input[name="q'+i+'"]:checked');
+        if (antwort && antwort.value === loesungen[i-1]) punkte++;
+    }
+    document.getElementById('ergebnis').innerText = `Du hast ${punkte} von 5 Punkten erreicht.`;
+}
+</script>
+
+</body>
+</html>
